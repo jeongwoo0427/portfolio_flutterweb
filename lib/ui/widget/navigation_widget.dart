@@ -8,7 +8,7 @@ class NavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(ResponsiveWrapper.of(context).scaledWidth);
+    //print(ResponsiveWrapper.of(context).scaledWidth);
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Container(
         height: 55,
