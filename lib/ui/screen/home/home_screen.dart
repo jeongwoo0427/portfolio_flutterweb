@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/ui/screen/home/banner_page.dart';
 
 import '../../widget/navigation_widget.dart';
 
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: const [
               NavigationWidget(),
+              BannerPage()
             ],
           ),
         ),

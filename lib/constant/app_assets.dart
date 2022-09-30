@@ -1,4 +1,6 @@
 class AppAssets{
+  static const String home_banner = 'asset/img/banner.jpg';
+
   // static final String _story_default_01 = 'asset/image/story_default/01_rainy.png';
   // static final String _story_default_02 = 'asset/image/story_default/02_family.png';
   // static final String _story_default_03 = 'asset/image/story_default/03_study.png';
