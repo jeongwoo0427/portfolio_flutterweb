@@ -11,9 +11,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final banner1Key = GlobalKey();
+  final banner2Key = GlobalKey();
+  final banner3Key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_circle_down_sharp),
+        onPressed: () {
+          Scrollable.ensureVisible(banner2Key.currentContext!, curve: Curves.decelerate, duration: Duration(milliseconds: 500));
+        },
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -24,11 +34,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   print('onPointerDown');
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
-                child: BannerPage(),
+                child: Column(
+                  children: [
+                    BannerPage(
+                      key: banner1Key,
+                    ),
+                    BannerPage(),
+                    BannerPage(
+                      key: banner2Key,
+                    ),
+                    BannerPage(),
+                    BannerPage(
+                      key: banner3Key,
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-          Positioned(top: 0,right: 0,left: 0,child: NavigationWidget(),),
+          Positioned(
+            top: 0,
+            right: 0,
+            left: 0,
+            child: NavigationWidget(),
+          ),
         ],
       ),
     );
