@@ -9,11 +9,12 @@ class BannerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 800,
-      decoration: BoxDecoration(
+      height: ResponsiveWrapper.of(context).isSmallerThan(TABLET)? 400:700,
+      decoration: const BoxDecoration(
           image: DecorationImage(
+            colorFilter: ColorFilter.linearToSrgbGamma(),
               image: AssetImage(AppAssets.home_banner),
-              fit:ResponsiveWrapper.of(context).isLargerThan(TABLET)? BoxFit.fitWidth:BoxFit.cover)),
+              fit:BoxFit.cover)),
     );
   }
 }

@@ -14,20 +14,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Listener(
-          onPointerDown: (event) {
-            print('onPointerDown');
-            FocusScope.of(context).requestFocus(FocusNode());
-          },
-          child: Column(
-            children: const [
-              NavigationWidget(),
-              BannerPage()
-            ],
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Listener(
+                onPointerDown: (event) {
+                  print('onPointerDown');
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+                child: BannerPage(),
+              ),
+            ),
           ),
-        ),
+          Positioned(top: 0,right: 0,left: 0,child: NavigationWidget(),),
+        ],
       ),
     );
   }
