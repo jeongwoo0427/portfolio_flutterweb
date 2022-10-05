@@ -3,17 +3,28 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'scaffold/constrained_layout.dart';
 
-class NavigationWidget extends StatelessWidget {
-  const NavigationWidget({Key? key}) : super(key: key);
+class NavigationWidget extends StatefulWidget {
+  final bool showBackColor;
 
+  const NavigationWidget({Key? key, this.showBackColor = false}) : super(key: key);
+
+  @override
+  State<NavigationWidget> createState() => _NavigationWidgetState();
+}
+
+class _NavigationWidgetState extends State<NavigationWidget> {
   @override
   Widget build(BuildContext context) {
     //print(ResponsiveWrapper.of(context).scaledWidth);
     ColorScheme colorScheme = Theme.of(context).colorScheme;
-    return Container(
+    return AnimatedContainer(
+        duration: Duration(milliseconds: 500),
+        curve: Curves.decelerate,
         height: 55,
         width: double.infinity,
-        color: colorScheme.primary,
+        decoration: BoxDecoration(
+            color: widget.showBackColor ? colorScheme.surface : Colors.transparent,
+            boxShadow: [BoxShadow(color: widget.showBackColor?Colors.black.withOpacity(0.2):Colors.transparent, offset: Offset(0, 2),blurRadius: 5)]),
         padding: ResponsiveValue<EdgeInsets>(context,
             defaultValue: const EdgeInsets.symmetric(
               horizontal: 25,
@@ -24,20 +35,26 @@ class NavigationWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'Iz Folio',
-                style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+              Text(
+                'IZ web',
+                style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w500,
+                    color: widget.showBackColor ? colorScheme.onBackground : Colors.white.withOpacity(0.9)),
               ),
               ResponsiveWrapper.of(context).isSmallerThan(TABLET)
-                  ? Icon(Icons.menu)
-                  : Row(
-                      children: const [
-                        Text('hi'),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text('hello')
-                      ],
+                  ? Icon(Icons.menu, color: widget.showBackColor ? colorScheme.onBackground : Colors.white.withOpacity(0.9))
+                  : DefaultTextStyle(
+                      style: TextStyle(fontSize: 18,color: widget.showBackColor ? colorScheme.onBackground : Colors.white.withOpacity(0.9)),
+                      child: Row(
+                        children: const [
+                          Text('hi'),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('hello')
+                        ],
+                      ),
                     )
             ],
           ),

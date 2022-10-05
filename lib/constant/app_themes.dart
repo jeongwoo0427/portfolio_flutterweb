@@ -6,7 +6,7 @@ class AppThemes {
 
   ///LightTheme Colors
   static const Color _lightFontColor = Color(0xFF464646);
-  static const Color _lightPrimaryColor = Color(0xFF7DB3D2);
+  static const Color _lightPrimaryColor = Color(0xFF438DC5);
   static const Color _lightOnPrimaryColor = Color(0xFFFAFCFF);
   static const Color _lightSecondaryColor = Color(0xFFC2EAF3);
   static const Color _lightTertiaryColor = Color(0xFF008CCA);
