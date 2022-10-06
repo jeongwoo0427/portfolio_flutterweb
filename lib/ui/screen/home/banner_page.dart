@@ -78,7 +78,7 @@ class BannerPage extends StatelessWidget {
             ),
             ElasticIn(
                 delay: Duration(milliseconds: 2000),
-                child: RoundedElevatedButton(onPressed: () {}, child: Text('더 알아복기')))
+                child: RoundedElevatedButton(onPressed: () {}, child: Text('더 알아보기')))
           ],
         ),
       ),
