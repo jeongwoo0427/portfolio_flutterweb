@@ -19,20 +19,22 @@ class _HomeScreenState extends State<HomeScreen> {
   final banner2Key = GlobalKey();
   final banner3Key = GlobalKey();
 
-  bool isBack = false;
+  bool isTop = true;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _scrollController.addListener(() {
-      setState(() {
-        if (_scrollController.offset > 80) {
-          isBack = true;
-        } else {
-          isBack = false;
-        }
-      });
+      if (_scrollController.offset > 80 && isTop == true) {
+        setState(() {
+          isTop = false;
+        });
+      } else if (_scrollController.offset <= 80 && isTop == false) {
+        setState(() {
+          isTop = true;
+        });
+      }
     });
   }
 
@@ -73,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             right: 0,
             left: 0,
             child: NavigationWidget(
-              showBackColor: isBack,
+              showBackColor: !isTop,
             ),
           ),
         ],
